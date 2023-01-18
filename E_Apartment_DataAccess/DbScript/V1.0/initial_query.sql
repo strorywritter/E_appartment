@@ -54,4 +54,4 @@ alter table apartment add constraint apartment_fk_3 foreign key(type_id) referen
 
 alter table occupier_detail add constraint occupier_detail_fk foreign key(apartment_id) references apartment(id);
 
-alter table building add column name varchar(20);
+alter table building add name varchar(20);

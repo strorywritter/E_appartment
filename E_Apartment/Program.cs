@@ -48,7 +48,8 @@ namespace E_Apartment
             return Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) => {
                     services.AddTransient<Form1>();
-                    services.AddDbContext<EApartmentDbContext>(options => options.UseSqlServer("Data Source=DESKTOP-KDT3DR0\\SQLEXPRESS; Initial Catalog=e_apartment;User ID=SQL-ADMIN;Password=admin@123;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
+                    services.AddDbContext<EApartmentDbContext>(options => options.UseSqlServer("Data Source=DESKTOP-A7I2FH5\\SQLEXPRESS; Initial Catalog=e_apartment;User ID=SQL-ADMIN;Password=admin@123;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
+                    //services.AddDbContext<EApartmentDbContext>(options => options.UseSqlServer("Data Source=localhost:1433;Initial Catalog=e_apartment;Persist Security Info=True;User ID=SQL-ADMIN;Password=admin@123;"));
                     services.AddScoped<IApartmentLogic,ApartmentLogic>();
                     services.AddScoped<IBuildingLogic, BuildingLogic>();
                     services.AddScoped<IOccupierLogic, OccupierLogic>();
