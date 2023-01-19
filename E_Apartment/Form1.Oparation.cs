@@ -19,7 +19,7 @@ namespace E_Apartment
             txtAlternateAddress.Text = "";
             txtContactNo.Text = "";
             txtNicPassport.Text = "";
-            comBApartments.DataSource= null;
+            //comBApartments.DataSource= null;
         }
 
         void ApartmentAddClear()
@@ -82,7 +82,7 @@ namespace E_Apartment
             dgvApartment.DataSource = apartmentLogic.ListApartment();
         }
 
-        async void ShowHome()
+        void ShowHome()
         {
             panelViewBuilding.Visible = false;
             panelViewOccupier.Visible = false;

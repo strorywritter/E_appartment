@@ -90,6 +90,10 @@ namespace E_Apartment
                         lblOccupierCount.Text = occupierLogic.getCount().ToString();
                         dgvNotApprovedLease.DataSource = leaseLogic.FindAllNotApprovedLeaseNotes();
                     }
+                    else
+                    {
+                        MessageBox.Show("Incorrect Password...!");
+                    }
                 }
                 else
                 {
