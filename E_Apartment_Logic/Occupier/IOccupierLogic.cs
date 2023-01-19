@@ -12,7 +12,7 @@ namespace E_Apartment_Logic.Occupier
         Task<OccupierDetail> Add(OccupierDetail occupierDetail);
         List<OccupierDetail> FilterByCode(string text);
         int getCount();
-        Task<List<OccupierDetail>> GetOccupiers();
+        IList<OccupierDetail> GetOccupiers();
         Task Update(Guid? id, OccupierDetail occupierDetail);
 
         

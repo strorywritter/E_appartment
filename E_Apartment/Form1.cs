@@ -88,6 +88,7 @@ namespace E_Apartment
                         lblApartmentCount.Text = apartmentLogic.GetCount().ToString();
                         lblBuildingCount.Text = buildingLogic.GetCount().ToString();
                         lblOccupierCount.Text = occupierLogic.getCount().ToString();
+                        dgvNotApprovedLease.DataSource = leaseLogic.FindAllNotApprovedLeaseNotes();
                     }
                 }
                 else
@@ -112,10 +113,10 @@ namespace E_Apartment
             dgvBuilding.DataSource = await buildingLogic.GetBuildings();            
         }
 
-        private async void btnViewOccupier_Click(object sender, EventArgs e)
+        private void btnViewOccupier_Click(object sender, EventArgs e)
         {
             ShowOccupier();
-            dgvOccupier.DataSource = await occupierLogic.GetOccupiers();
+            dgvOccupier.DataSource = occupierLogic.GetOccupiers();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -417,9 +418,10 @@ namespace E_Apartment
             lblSelectedLeaseId.Text = search.Cells[0].Value.ToString();
         }
 
-        private void btnApproveLease_Click(object sender, EventArgs e)
+        private async void btnApproveLease_Click(object sender, EventArgs e)
         {
-            leaseLogic.ApproveLeaseNote(this.NotApprovedLeaseDetailId);
+            await leaseLogic.ApproveLeaseNote(this.NotApprovedLeaseDetailId);
+            dgvNotApprovedLease.DataSource = leaseLogic.FindAllNotApprovedLeaseNotes();
         }
 
         private void button4_Click_2(object sender, EventArgs e)
@@ -478,11 +480,11 @@ namespace E_Apartment
             ShowExtendRequest();
         }
 
-        private void btnApproveExtendRequest_Click(object sender, EventArgs e)
+        private async void btnApproveExtendRequest_Click(object sender, EventArgs e)
         {
             try
             {
-                leaseLogic.UpdateExtentionStatusAsync(this.ExtentionLeaseId);
+                await leaseLogic.UpdateExtentionStatusAsync(this.ExtentionLeaseId);
                 dgvExtendRequest.DataSource = leaseLogic.FindAllExtendRequest();
                 dgvApprovedExtendRequest.DataSource = leaseLogic.FindAllExtendedLease();
             }catch(Exception ex)
@@ -494,7 +496,7 @@ namespace E_Apartment
         private void dgvExtendRequest_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var result = dgvExtendRequest.Rows[e.RowIndex];
-            this.ExtentionLeaseId = Guid.Parse(result.Cells[5].Value.ToString());
+            this.ExtentionLeaseId = Guid.Parse(result.Cells[4].Value.ToString());
         }
 
         private void dgvApprovedExtendRequest_CellContentClick(object sender, DataGridViewCellEventArgs e)

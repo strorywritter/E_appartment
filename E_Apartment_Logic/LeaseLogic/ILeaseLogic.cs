@@ -11,9 +11,9 @@ namespace E_Apartment_Logic.LeaseLogic
     public interface ILeaseLogic
     {
         Task AddAsync(LeaseDetail leaseDetail);
-        void ApproveLeaseNote(Guid? notApprovedLeaseDetailId);
+        Task ApproveLeaseNote(Guid? notApprovedLeaseDetailId);
         IList<LeaseDetail> FilterByDate(DateTime value1, DateTime value2);
-        Task<IList<dbCore.LeaseDetail>> FindAllNotApprovedLeaseNotes();
+        IList<dbCore.LeaseDetail> FindAllNotApprovedLeaseNotes();
         IList<dbCore.LeaseDetail> FindApprovedLeaseNotes();
 
         dbCore.LeaseDetail FindApprovedLeaseDetailsById(Guid id);

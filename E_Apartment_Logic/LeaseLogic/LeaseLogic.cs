@@ -51,16 +51,16 @@ namespace E_Apartment_Logic.LeaseLogic
 
 
         }
-
-        public void ApproveLeaseNote(Guid? notApprovedLeaseDetailId)
+        public async Task ApproveLeaseNote(Guid? notApprovedLeaseDetailId)
         {
             var result = eApartmentDbContext.LeaseDetails.Where(x => x.Id == notApprovedLeaseDetailId).FirstOrDefault();
-            if(result != null){
-                result.LeaseStatusId = 2;
+            if (result != null)
+            {
+                result.LeaseStatusId = 1;
 
-                eApartmentDbContext.LeaseDetails.AddAsync(result);
-                eApartmentDbContext.SaveChangesAsync();
-            } 
+                eApartmentDbContext.LeaseDetails.Update(result);
+                await eApartmentDbContext.SaveChangesAsync();
+            }
         }
 
         public IList<LeaseDetail> FilterByDate(DateTime value1, DateTime value2)
@@ -78,9 +78,9 @@ namespace E_Apartment_Logic.LeaseLogic
             return eApartmentDbContext.LeaseExtensions.Where(x=>x.LeaseStatusId==2).ToList();
         }
 
-        public async Task<IList<LeaseDetail>> FindAllNotApprovedLeaseNotes()
+        public IList<LeaseDetail> FindAllNotApprovedLeaseNotes()
         {
-            return await eApartmentDbContext.LeaseDetails.Where(x=>x.LeaseStatusId==1).ToListAsync();
+            return eApartmentDbContext.LeaseDetails.Where(x => x.LeaseStatusId == 2).ToList();
         }
 
         public LeaseDetail FindApprovedLeaseDetailsById(Guid id)
@@ -90,7 +90,7 @@ namespace E_Apartment_Logic.LeaseLogic
 
         public IList<LeaseDetail> FindApprovedLeaseNotes()
         {
-            return eApartmentDbContext.LeaseDetails.Where(x => x.LeaseStatusId == 2).ToList();
+            return eApartmentDbContext.LeaseDetails.Where(x => x.LeaseStatusId == 1).ToList();
         }
 
         public async Task Update(Guid? id, LeaseDetail leaseDetail)

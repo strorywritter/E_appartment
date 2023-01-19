@@ -962,7 +962,6 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(222, 27);
             this.txtUsername.TabIndex = 2;
-            this.txtUsername.Text = "in";
             this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // label30
@@ -982,6 +981,7 @@
             this.label29.Size = new System.Drawing.Size(75, 20);
             this.label29.TabIndex = 0;
             this.label29.Text = "Username";
+            this.label29.Click += new System.EventHandler(this.btnApproveExtendRequest_Click);
             // 
             // btnHome
             // 
@@ -1193,10 +1193,10 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Segoe UI Variable Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label32.Location = new System.Drawing.Point(24, 21);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(270, 40);
+            this.label32.Size = new System.Drawing.Size(269, 36);
             this.label32.TabIndex = 0;
             this.label32.Text = "Admin Dashboard";
             // 

@@ -36,9 +36,9 @@ namespace E_Apartment_Logic.Occupier
             return eApartmentDbContext.OccupierDetails.Count();
         }
 
-        public async Task<List<OccupierDetail>> GetOccupiers()
+        public IList<OccupierDetail> GetOccupiers()
         {
-            return await eApartmentDbContext.OccupierDetails.ToListAsync();
+            return eApartmentDbContext.OccupierDetails.ToList();
         }
 
         public async Task Update(Guid? id, OccupierDetail occupierDetail)

@@ -97,7 +97,7 @@ namespace E_Apartment
             panelApprovedLeaseNote.Visible = false;
             panelExtendRequest.Visible = false;
 
-            dgvNotApprovedLease.DataSource = await leaseLogic.FindAllNotApprovedLeaseNotes();
+            dgvNotApprovedLease.DataSource = leaseLogic.FindAllNotApprovedLeaseNotes();
             lblAwailableApartmentCount.Text = apartmentLogic.AvailableApartmentCount().ToString();
 
             lblApartmentCount.Text = apartmentLogic.GetCount().ToString();
@@ -250,7 +250,7 @@ namespace E_Apartment
 
         }
 
-        async void ShowAddLease()
+        void ShowAddLease()
         {
             panelViewApartment.Visible = false;
             panelViewBuilding.Visible = false;
@@ -271,10 +271,12 @@ namespace E_Apartment
             comBLeaseApartment.DisplayMember = "Code";
             comBLeaseApartment.ValueMember = "Id";
 
-            var occupiers = await occupierLogic.GetOccupiers();
+            var occupiers = occupierLogic.GetOccupiers();
 
+            comBLeaseOccupier.DataSource = occupiers;
             comBLeaseOccupier.DisplayMember = "Code";
             comBLeaseOccupier.ValueMember = "Id";
+
         }
 
         void ShowExtendRequest()
@@ -299,8 +301,8 @@ namespace E_Apartment
         }
         void ClearAddLease()
         {
-            comBLeaseOccupier.DataSource= null;
-            comBLeaseOccupier.DataSource= null;
+            //comBLeaseOccupier.DataSource= null;
+            //comBLeaseOccupier.DataSource= null;
             fromDateLease.Value = DateTime.Now;
             toDateLease.Value = DateTime.Now;
             txtMonthlyFee.Text = "";            
@@ -367,7 +369,7 @@ namespace E_Apartment
         {
             return new dbCore.LeaseDetail()
             {
-                MonthlyFee = Convert.ToInt16(txtMonthlyFee.Text),
+                MonthlyFee = Convert.ToInt32(txtMonthlyFee.Text),
                 FromDate = fromDateLease.Value,
                 ToDate= toDateLease.Value,
                 ApartmentId = Guid.Parse(comBLeaseApartment.SelectedValue.ToString()),
