@@ -16,4 +16,6 @@ public partial class Building
     public bool? IsDelete { get; set; }
 
     public string? Name { get; set; }
+
+    public virtual ICollection<Apartment> Apartments { get; } = new List<Apartment>();
 }

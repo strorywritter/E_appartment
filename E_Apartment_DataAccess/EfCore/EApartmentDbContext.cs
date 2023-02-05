@@ -50,6 +50,7 @@ public partial class EApartmentDbContext : DbContext
             entity.Property(e => e.Id)
                 .HasDefaultValueSql("(newid())")
                 .HasColumnName("id");
+            entity.Property(e => e.BuildingId).HasColumnName("building_id");
             entity.Property(e => e.Code)
                 .HasMaxLength(20)
                 .IsUnicode(false)
@@ -64,6 +65,10 @@ public partial class EApartmentDbContext : DbContext
             entity.Property(e => e.IsDelete).HasColumnName("is_delete");
             entity.Property(e => e.StatusId).HasColumnName("status_id");
             entity.Property(e => e.TypeId).HasColumnName("type_id");
+
+            entity.HasOne(d => d.Building).WithMany(p => p.Apartments)
+                .HasForeignKey(d => d.BuildingId)
+                .HasConstraintName("apartment_fk_4");
 
             entity.HasOne(d => d.Status).WithMany(p => p.Apartments)
                 .HasForeignKey(d => d.StatusId)

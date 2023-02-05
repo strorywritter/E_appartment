@@ -19,6 +19,10 @@ public partial class Apartment
 
     public short? TypeId { get; set; }
 
+    public Guid? BuildingId { get; set; }
+
+    public virtual Building? Building { get; set; }
+
     public virtual ICollection<LeaseDetail> LeaseDetails { get; } = new List<LeaseDetail>();
 
     public virtual ICollection<OccupierDetail> OccupierDetails { get; } = new List<OccupierDetail>();

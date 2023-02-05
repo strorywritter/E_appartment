@@ -24,6 +24,7 @@ namespace E_Apartment
         private Guid? BuildingId;
         private Guid? LeaseDetailId;
         private Guid? NotApprovedLeaseDetailId;
+        private User? user;
 
         //this id represent leaseDetailId
         private Guid? ExtentionLeaseId;
@@ -62,27 +63,31 @@ namespace E_Apartment
             lblOccupierCount.Text = occupierLogic.getCount().ToString();
 
             MainControlsVisibility(false);
+            comBApartmentBuilding.Visible = false;
+            label28.Visible = false;
+
         }
         private async void btnLogin_Click(object sender, EventArgs e)
         {
             try
             {
-                var user = await loginLogic.FindByUserName(txtUsername.Text);
-                if (user != null)
+                this.user = await loginLogic.FindByUserName(txtUsername.Text);
+                if (this.user != null)
                 {
-                    if (user.Password == txtPassword.Text.Trim())
+                    if (this.user.Password == txtPassword.Text.Trim())
                     {
                         panelLogin.Visible = false;
                         MainControlsVisibility(true);
                         txtUsername.Text = "";
                         txtPassword.Text = "";
 
-                        if (user.TypeId == 2)
+                        if (this.user.TypeId == 2)
                         {
                             btnViewApartment.Visible = false;
                             btnViewOccupier.Visible = false;
                             btnAddUser.Visible = false;
                             btnHome.Visible = false;
+                           
                         }
 
                         lblApartmentCount.Text = apartmentLogic.GetCount().ToString();

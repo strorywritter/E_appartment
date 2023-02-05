@@ -119,6 +119,11 @@ namespace E_Apartment
             panelApprovedLeaseNote.Visible = false;
             panelLeaseDetails.Visible = false;
             panelExtendRequest.Visible = false;
+            if(this.user.TypeId == 1)
+            {
+                btnUpdateBuildingDetail.Visible = false;
+                button3.Visible = false;
+            }
         }
 
         void ShowOccupier()
@@ -182,7 +187,7 @@ namespace E_Apartment
 
         }
 
-        void ShowAddApartment()
+        async void ShowAddApartment()
         {
             panelViewApartment.Visible = false;
             panelViewBuilding.Visible = false;
@@ -207,6 +212,11 @@ namespace E_Apartment
             comBApartmentStatus.DataSource = statuses;
             comBApartmentStatus.DisplayMember = "Name";
             comBApartmentStatus.ValueMember = "Id";
+
+            var buildings = await buildingLogic.GetBuildings();
+            comBApartmentsInBuilding.DataSource = buildings;
+            comBApartmentsInBuilding.DisplayMember = "Code";
+            comBApartmentsInBuilding.ValueMember = "Id";
         }
 
         async Task ShowAddUsersAsync()
@@ -358,8 +368,9 @@ namespace E_Apartment
                 Description = txtDescription.Text,
                 FlowNo = txtFlowNumber.Text,
                 TypeId = Convert.ToInt16(comBApartmentTypes.SelectedValue.ToString()),
-                StatusId = Convert.ToInt16(comBApartmentStatus.SelectedValue.ToString())
-                
+                StatusId = Convert.ToInt16(comBApartmentStatus.SelectedValue.ToString()),
+                BuildingId = Guid.Parse(comBApartmentsInBuilding.SelectedValue.ToString())
+
             };
 
             return apartment;

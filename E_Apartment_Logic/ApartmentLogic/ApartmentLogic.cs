@@ -65,6 +65,7 @@ namespace E_Apartment_Logic.ApartmentLogic
             existingApartment.StatusId = apartment.StatusId;
             existingApartment.IsDelete = apartment.IsDelete;
             existingApartment.TypeId = apartment.TypeId;
+            existingApartment.BuildingId = apartment.BuildingId;
 
             eApartmentDbContext.Apartments.Update(existingApartment);
             eApartmentDbContext.SaveChanges();

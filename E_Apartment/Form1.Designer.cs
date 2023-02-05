@@ -82,6 +82,8 @@
             this.btnOccupierSave = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.panelAddApartment = new System.Windows.Forms.Panel();
+            this.comBApartmentsInBuilding = new System.Windows.Forms.ComboBox();
+            this.label53 = new System.Windows.Forms.Label();
             this.comBApartmentStatus = new System.Windows.Forms.ComboBox();
             this.label22 = new System.Windows.Forms.Label();
             this.comBApartmentTypes = new System.Windows.Forms.ComboBox();
@@ -701,6 +703,8 @@
             // 
             // panelAddApartment
             // 
+            this.panelAddApartment.Controls.Add(this.comBApartmentsInBuilding);
+            this.panelAddApartment.Controls.Add(this.label53);
             this.panelAddApartment.Controls.Add(this.comBApartmentStatus);
             this.panelAddApartment.Controls.Add(this.label22);
             this.panelAddApartment.Controls.Add(this.comBApartmentTypes);
@@ -717,6 +721,23 @@
             this.panelAddApartment.Name = "panelAddApartment";
             this.panelAddApartment.Size = new System.Drawing.Size(995, 665);
             this.panelAddApartment.TabIndex = 8;
+            // 
+            // comBApartmentsInBuilding
+            // 
+            this.comBApartmentsInBuilding.FormattingEnabled = true;
+            this.comBApartmentsInBuilding.Location = new System.Drawing.Point(252, 381);
+            this.comBApartmentsInBuilding.Name = "comBApartmentsInBuilding";
+            this.comBApartmentsInBuilding.Size = new System.Drawing.Size(265, 28);
+            this.comBApartmentsInBuilding.TabIndex = 16;
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Location = new System.Drawing.Point(97, 381);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(108, 20);
+            this.label53.TabIndex = 15;
+            this.label53.Text = "Select Building";
             // 
             // comBApartmentStatus
             // 
@@ -924,7 +945,7 @@
             this.panelLogin.Controls.Add(this.txtUsername);
             this.panelLogin.Controls.Add(this.label30);
             this.panelLogin.Controls.Add(this.label29);
-            this.panelLogin.Location = new System.Drawing.Point(0, 2);
+            this.panelLogin.Location = new System.Drawing.Point(1, 1);
             this.panelLogin.Name = "panelLogin";
             this.panelLogin.Size = new System.Drawing.Size(1385, 720);
             this.panelLogin.TabIndex = 11;
@@ -1568,7 +1589,6 @@
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btnLeaseDetails);
-            this.Controls.Add(this.panelHome);
             this.Controls.Add(this.panelViewApartment);
             this.Controls.Add(this.panelViewBuilding);
             this.Controls.Add(this.panelAddBuilding);
@@ -1580,6 +1600,7 @@
             this.Controls.Add(this.panelLeaseDetails);
             this.Controls.Add(this.panelApprovedLeaseNote);
             this.Controls.Add(this.panelExtendRequest);
+            this.Controls.Add(this.panelHome);
             this.Name = "Form1";
             this.Text = "Form1";
             this.panelViewApartment.ResumeLayout(false);
@@ -1762,5 +1783,7 @@
         private Label label50;
         private DataGridView dgvApprovedExtendRequest;
         private Label label52;
+        private ComboBox comBApartmentsInBuilding;
+        private Label label53;
     }
 }
