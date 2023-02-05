@@ -83,6 +83,7 @@ namespace E_Apartment
 
                         if (this.user.TypeId == 2)
                         {
+                            panelHome.Visible = false;
                             btnViewApartment.Visible = false;
                             btnViewOccupier.Visible = false;
                             btnAddUser.Visible = false;
@@ -325,6 +326,17 @@ namespace E_Apartment
             this.ApartmentId = Guid.Parse(search.Cells[0].Value.ToString());
             txtFlowNumber.Text = search.Cells[3].Value.ToString();
             comBApartmentTypes.Text = search.Cells[7].ToString();
+            if (search.Cells[4].Value.ToString() == "1") {
+                search.Cells[4].Value = "Available";
+            }
+            if (search.Cells[4].Value.ToString() == "2")
+            {
+                search.Cells[4].Value = "Occupied";
+            }
+            if (search.Cells[4].Value.ToString() == "3")
+            {
+                search.Cells[4].Value = "Unavailable";
+            }
         }
 
         
@@ -379,7 +391,7 @@ namespace E_Apartment
 
         private async void btnLeaseSave_Click(object sender, EventArgs e)
         {
-            if (this.ApartmentId != null)
+            if (this.LeaseDetailId != null)
             {
                 try
                 {

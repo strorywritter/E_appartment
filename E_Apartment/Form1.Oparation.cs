@@ -119,7 +119,7 @@ namespace E_Apartment
             panelApprovedLeaseNote.Visible = false;
             panelLeaseDetails.Visible = false;
             panelExtendRequest.Visible = false;
-            if(this.user.TypeId == 1)
+            if(this.user.TypeId == 2)
             {
                 btnUpdateBuildingDetail.Visible = false;
                 button3.Visible = false;
@@ -262,6 +262,7 @@ namespace E_Apartment
 
         void ShowAddLease()
         {
+            this.LeaseDetailId = null;
             panelViewApartment.Visible = false;
             panelViewBuilding.Visible = false;
             panelAddOccupier.Visible = false;
